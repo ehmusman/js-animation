@@ -1,0 +1,104 @@
+<!DOCTYPE html >
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>JS Animation</title>
+            <style>
+                body{
+                    background-color: #000;
+                }
+                #block {
+                    background: black;
+                    color: #fff;
+                    /* font-size: 40px;
+                    font-weight: bolder; */
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 200px;
+                    height: 200px;
+                    border-radius: 50%;
+                    border-top: 3px solid #fff;
+
+                    }
+                    #playback{
+                        margin-top: 1rem;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                    #current{
+                        color: #fff;
+                    }
+                    #contain{
+                        max-width: 500px;
+                        margin: 2rem auto;
+                    }
+                 
+            </style>
+        </head>
+        <body>
+            <div id="contain">
+            <div class="container">
+                <button id="play">Play</button>
+                <button id="pause">Pause</button>
+                <button id="reverse">reverse</button>
+            </div>
+            <div id="block">
+                <!-- <p>hello world</p> -->
+            </div>
+            <div id="playback">
+                <div>
+                    <input type="range" min='0.5' max='7' value="3" step="0.5" id="range">
+                </div>
+                <div id="current">3</div>
+            </div>
+        </div>
+            <!-- <button id='btn'>Click me</button> -->
+            <script>
+                var elementAnimation = document.getElementById('block').animate([
+                    // { transform: 'translate(0, 0)' },
+                    // { transform: 'translate(600px, 0) scale(1)' },
+                    { transform: 'rotate(0)' },
+                    { transform: 'rotate(360deg)' },
+                    // { transform: 'translate(400px, 400px)', borderRadius: '50%'},
+                    // { transform: 'translate(0, 400px)', borderRadius: '0%' },
+                    // { transform: 'translate(0, 0)', borderRadius: '0%' },
+                    // {transform: 'translate(0,0) scale(0)', opacity: 0},
+                    // {transform: 'translate(50%,50%) scale(2)', opacity: 1}
+                    ], {
+                    duration: 500,
+                    iterations: Infinity,
+                    // direction: 'alternate',
+                    // easing: 'ease-in-out'
+                    })
+                   document.getElementById('play')
+                   play.addEventListener('click',  () => {
+                       elementAnimation.play()
+                   })
+                 document.getElementById('pause')
+                   pause.addEventListener('click', () => {
+                       elementAnimation.pause()
+                   })
+                   document.getElementById('reverse')
+                   reverse.addEventListener('click', () => {
+                       elementAnimation.reverse()
+                   })
+                   document.getElementById('range').addEventListener('input', e => {
+                       const value = e.target.value
+                       document.getElementById('current').innerText= value;
+                       elementAnimation.playbackRate = value;
+                   })
+
+                   
+                   
+                    // var handleClick = document.getElementById('btn').addEventListener('mousedown', ()=> {
+                    //     // alert(23456)
+                    //     element.play()
+                    // })
+
+            </script>
+        </body>
+    </html>
